@@ -2,7 +2,7 @@
   "name": "microsoft-teams-ext",
   "version": "0.1.0",
   "msteams": {
-    "teamsAppId": "MICROSOFT_TEAMS_APPID"
+    "teamsAppId": "39081a22-1b84-4a84-89a6-f858b58a51e4"
   },
   "private": true,
   "scripts": {
