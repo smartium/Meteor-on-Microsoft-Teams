@@ -6,9 +6,41 @@ import '../imports/client/templates/config/config'
 import '../imports/client/templates/privacy/privacy'
 import '../imports/client/templates/terms/terms'
 
-import * as microsoftTeams from "@microsoft/teams-js";
+// import * as msTeams from "@microsoft/teams-js";
+msTeams = require('@microsoft/teams-js')
+
+Meteor.startup(()=> {
+  // msTeams.initialize((callback)=> {
+  //   console.log(callback);
+  // })
+});
+
+Tracker.autorun(()=> {
+})
 
 import './main.html';
+
+Template.home.onCreated(function homeOnCreated() {
+  this.teamsContext = new ReactiveVar('teamsContext')
+  msTeams.initialize()
+});
+
+Template.home.onRendered(function homeOnRendered() {
+  msTeams.getContext((context, error) => {
+    if (context) {
+      Template.instance().teamsContext.set(context);
+    }
+    else {
+      Template.instance().teamsContext.set('ERROR');
+    }
+  });
+});
+
+Template.home.helpers({
+  teamsContext() {
+    return Template.instance().teamsContext.get();
+  }
+})
 
 Template.hello.onCreated(function helloOnCreated() {
   // counter starts at 0
