@@ -27,3 +27,15 @@ FlowRouter.route('/terms', {
         BlazeLayout.render("layout", {main: "terms"});
     }
 });
+
+FlowRouter.route('/quiz/create', {
+    action: function(params) {
+        BlazeLayout.render("quiz", {main: "createQuiz"});
+    }
+});
+
+FlowRouter.route('/quiz/play', {
+    action: function(params) {
+        BlazeLayout.render("quiz", {main: "playQuiz"});
+    }
+});

@@ -1,61 +1,43 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/js/materialize.min'
 import '../imports/client/lib/routes'
 import '../imports/client/templates/tab/tab'
 import '../imports/client/templates/config/config'
 import '../imports/client/templates/privacy/privacy'
 import '../imports/client/templates/terms/terms'
+import '../imports/client/templates/quiz/create'
+import '../imports/client/templates/quiz/play'
 
-// import * as msTeams from "@microsoft/teams-js";
-msTeams = require('@microsoft/teams-js')
-
-Meteor.startup(()=> {
-  // msTeams.initialize((callback)=> {
-  //   console.log(callback);
-  // })
-});
-
-Tracker.autorun(()=> {
-})
+import * as msTeams from "@microsoft/teams-js";
 
 import './main.html';
 
-Template.home.onCreated(function homeOnCreated() {
-  this.teamsContext = new ReactiveVar('teamsContext')
-  msTeams.initialize()
+teamsContext = new ReactiveVar()
+
+Template.registerHelper('upper', function(string) {
+  return string.toUpperCase()
 });
 
-Template.home.onRendered(function homeOnRendered() {
-  msTeams.getContext((context, error) => {
-    if (context) {
-      Template.instance().teamsContext.set(context);
-    }
-    else {
-      Template.instance().teamsContext.set('ERROR');
-    }
-  });
+Template.registerHelper('info', ()=> {
+  return teamsContext.get()
 });
+
+Template.body.onCreated(function homeOnCreated() {
+  msTeams.initialize()
+  msTeams.getContext((context)=> {
+    if (context) {
+      teamsContext.set(context);
+      // console.clear()
+      // console.log(context);
+    } else {
+      alert('ERRO!')
+    }
+  })
+});
+
+Template.body.onRendered(function homeOnRendered() {});
 
 Template.home.helpers({
-  teamsContext() {
-    return Template.instance().teamsContext.get();
-  }
-})
-
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
-
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
-
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
 });

@@ -6,37 +6,76 @@
 </body>
 
 <template name="home">
-  <h1>Welcome to</h1>
-  <h2>Microsoft Teams Extension for MeteorJS!</h2>
-  <p>
-    Teste de WebApp em Framework Meteor para extensão do Microsoft Teams
-  </p>
-
-  {{> hello}}
-  {{> info}}
-
-  <h1>{{teamsContext}}</h1>
-
+<p>A Eletrobras é holding de um sistema de empresas composto por Eletrobras Chesf, Eletrobras Eletronorte, Eletrobras Eletronuclear, Eletrobras CGT Eletrosul e Eletrobras Furnas; pela empresa de participações Eletrobras Eletropar; e pelo centro de pesquisas Eletrobras Cepel. A Eletrobras também detém metade do capital de Itaipu Binacional.</p>    
+<p>Responsável por 37% do total da capacidade de geração do país, a Eletrobras tem capacidade instalada de 42.080 megawatts e 164 usinas – 36 hidrelétricas e 128 térmicas, sendo duas termonucleares. Possui mais de 58 mil quilômetros de linhas de transmissão, o que corresponde a 57% do total nacional. A empresa também promove o uso eficiente da energia e o combate ao desperdício por intermédio do Programa Nacional de Conservação de Energia Elétrica (Procel).</p>
+<p>Em 2008, a Eletrobras foi autorizada a atuar no exterior. Seu foco atual é o continente americano, em especial a integração energética na América do Sul.</p>
+<p>Em 2010, a Eletrobras adotou uma nova identidade visual, visando consolidar o processo de transformação do Sistema Eletrobras. Na sigla da empresa, inscrita em sua marca, o acento não é mais adotado.</p>
+<p class="fonte">Fonte: <a href="https://pt.wikipedia.org/wiki/Eletrobras" target="_blank">Wikipedia</a></p>
 </template>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
+<template name="quiz">
+  <div class="content grey lighten-1">
+    <div class="row">
+      <div class="col s12">
+        <img src="/images/eletrobras_logo.png" alt="Eletrobrás" class="left">
+        <h4>EletroQuiz</h4>
+        <h5>Quiz para o evento da Eletrobras</h5>
 
-<template name="info">
-  <h3>Learn Meteor!</h3>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        {{> Template.dynamic template=main}}
+      </div>
+    </div>
+    <footer>
+      <div class="row">
+        <div class="col s12">
+          <p><b>Logado com a conta:</b> <i>{{upper info.upn}}</i></p>
+          <p><b>Aba:</b> <i>{{upper info.entityId}}</i></p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  {{> copyright}}
 </template>
 
 <template name="layout">
-  <div class="content">
-    <img src="/images/meteorjs.png" alt="Meteor JS">
-    {{> Template.dynamic template=main}}
+  <div class="content grey lighten-1">
+    <div class="row">
+      <div class="col s12">
+        <img src="/images/eletrobras_logo.png" alt="Eletrobrás" class="left">
+        <h4>EletroQuiz</h4>
+        <h5>Quiz para o evento da Eletrobras</h5>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+
+
+        <div class="card-panel">
+          <div class="black-text">
+            {{> Template.dynamic template=main}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="row">
+        <div class="col s12">
+          <p><b>Logado com a conta:</b> <i>{{upper info.upn}}</i></p>
+          <p><b>Aba:</b> <i>{{upper info.entityId}}</i></p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  {{> copyright}}
+</template>
+
+<template name="copyright">
+  <div class="copyright">
+    <big class="white-text">Um produto <b>InterAoVivo</b></big><br>
+    <small>@2020 SMARTIUM. Todos os direitos reservados.</small>
   </div>
 </template>

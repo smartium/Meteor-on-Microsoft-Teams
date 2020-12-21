@@ -2,7 +2,8 @@
   "name": "microsoft-teams-ext",
   "version": "0.1.0",
   "msteams": {
-    "teamsAppId": "835d0d5c-85b4-48a8-884c-11a89ceea268"},
+    "teamsAppId": "835d0d5c-85b4-48a8-884c-11a89ceea268"
+  },
   "private": true,
   "scripts": {
     "start": "meteor run",
@@ -14,6 +15,7 @@
     "@babel/runtime": "^7.11.2",
     "@microsoft/teams-js": "^1.8.0",
     "jquery": "^3.5.1",
+    "materialize-css": "^1.0.0-rc.2",
     "meteor-node-stubs": "^1.0.1"
   },
   "meteor": {
