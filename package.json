@@ -2,7 +2,7 @@
   "name": "microsoft-teams-ext",
   "version": "0.1.0",
   "msteams": {
-    "teamsAppId": "59c4a606-eb40-433c-9b5d-d859141ed439"},
+    "teamsAppId": "835d0d5c-85b4-48a8-884c-11a89ceea268"},
   "private": true,
   "scripts": {
     "start": "meteor run",
